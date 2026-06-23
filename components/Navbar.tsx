@@ -95,7 +95,7 @@ export default function Navbar() {
               className="hidden md:block"
             >
               <Link
-                href="/contacto"
+                href="/contact"
                 className="group flex items-center gap-1.5 border border-black bg-black px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white transition-all duration-200 hover:bg-white hover:text-black"
               >
                 Contactar Ventas
@@ -174,7 +174,7 @@ export default function Navbar() {
                   className="pt-5"
                 >
                   <Link
-                    href="/contacto"
+                    href="/contat"
                     className="flex w-full items-center justify-center gap-2 bg-black py-3.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-white"
                   >
                     Contactar Ventas

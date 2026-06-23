@@ -15,7 +15,7 @@ export default function Solutions() {
     icon: Sparkles,
   },
   {
-    kicker: "Escalabilidad",
+    kicker: "Paid Media",
     title: "Marketing",
     body: "Captación de nuevos clientes através de nuestras herramientas de marketing y publicidad. El ROI esperado supera las espectativas de nuestros clientes.",
     icon: ShoppingBag,
@@ -34,7 +34,6 @@ export default function Solutions() {
         eyebrow="Soluciones"
         title="Digitalización, consultoría & expertos IA."
         body="Nuestro equipo implementa las soluciones más eficaces a los clientes, de forma que generamos un mejor rendimiento que agencias tradicionales."
-        cta={{ label: "Mirar todas las soluciones", href: "#" }}
       />
       <Stagger className="grid md:grid-cols-3 gap-5" stagger={0.12}>
         {solutions.map((s) => {
@@ -58,13 +57,6 @@ export default function Solutions() {
                   <h3 className="text-display text-3xl mb-4">{s.title}</h3>
                   <p className="text-ink-muted leading-relaxed">{s.body}</p>
                 </div>
-                <a
-                  href="#"
-                  className="mt-auto inline-flex items-center gap-2 text-sm font-medium"
-                >
-                  Descrube más
-                  <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </a>
               </motion.div>
             </Item>
           );

@@ -13,7 +13,6 @@ export default function About() {
         eyebrow="Nosotros"
         title="Una agencia innovadora."
         body="Fundada en Barcelona, diseñamos acciones que generan efectos medibles. Construimos marcas que ven resultados."
-        cta={{ label: "Conocénos más", href: "#" }}
       />
       <Stagger className="grid lg:grid-cols-3 gap-5" stagger={0.1}>
         <Item className="lg:col-span-2">
@@ -29,7 +28,7 @@ export default function About() {
         <Item>
           <div className="grid grid-cols-1 gap-5">
             <Stat target={5} suffix="+" label="Expertos" />
-            <Stat target={2024} label="Founders since" />
+            <Stat target={2024} label="Fundado desde" />
           </div>
         </Item>
       </Stagger>

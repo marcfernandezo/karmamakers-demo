@@ -30,7 +30,6 @@ export default function Customers() {
         eyebrow="Showcase"
         title="El progreso no se promete. Se construye."
         body="Más de 500 clientes han utilizado nuestro servicio de desarrollo digital, sectores como educación, cultura confían en nosotros."
-        cta={{ label: "Explora más", href: "#" }}
       />
 
       <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-5" stagger={0.12}>

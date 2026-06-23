@@ -273,8 +273,8 @@ function validate(): boolean {
           {/* Stepper — square style matching "■ Let's Connect" motif */}
           <div className="flex items-center mb-9">
             {[
-              { n: 1, l: "Contact" },
-              { n: 2, l: "Schedule" },
+              { n: 1, l: "Schedule" },
+              { n: 2, l: "Contact" },
               { n: 3, l: "Confirm" },
             ].map((s, i) => (
               <div key={s.n} className="flex items-center">
@@ -312,7 +312,7 @@ function validate(): boolean {
           </div>
 
           {/* ────── STEP 1 : Contact form ────── */}
-          {step === 1 && (
+          {step === 2 && (
             <div key="step-contact" className="step-in">
               <div className="grid grid-cols-2 gap-3 mb-3">
                 <InputField label="First name" required error={errs.firstName}>
@@ -436,7 +436,7 @@ function validate(): boolean {
           )}
 
           {/* ────── STEP 2 : Calendar ────── */}
-          {step === 2 && (
+          {step === 1 && (
             <div key="step-calendar" className="step-in">
               {/* Calendar card */}
               <div className="border border-gray-100 p-5 mb-4 shadow-sm">

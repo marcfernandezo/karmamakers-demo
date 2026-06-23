@@ -22,7 +22,7 @@ const LINKS = {
     { label: "Showcase",   href: "#showcase"   },
     { label: "Nosotros",   href: "#about"   },
     { label: "Trabajo",    href: "#about"    },
-    { label: "Contacto",   href: "#about"   },
+    { label: "Contacto",   href: "/contact"   },
   ],
   social: [
     { label: "Instagram",   href: "https://www.instagram.com/karmamakers"         },
@@ -39,8 +39,8 @@ const LINKS = {
 const CONTACT_ITEMS = [
   {
     Icon: Mail,
-    label: "hello@karma-makers.es",
-    href: "mailto:hello@karma-makers.es",
+    label: "gerencia@karma-makers.es",
+    href: "mailto:gerencia@karma-makers.es",
   },
   {
     Icon: MapPin,

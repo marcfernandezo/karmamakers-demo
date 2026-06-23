@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const agencyEase = [0.76, 0, 0.24, 1] as const;
 
@@ -104,10 +105,12 @@ export default function PinnedAgencyHeader() {
             transition={{ duration: 1, delay: 0.8, ease: agencyEase }}
             className="pointer-events-auto mt-12 w-fit flex flex-1 pt-4 gap-4"
           >
-            <button className="group relative flex items-center gap-3 overflow-hidden bg-black px-8 py-5 text-white transition-all hover:bg-neutral-800">
+            <Link href={"/contact"}>
+            <button className="group relative flex items-center gap-3 overflow-hidden bg-black px-8 py-5 text-white transition-all hover:bg-neutral-800 hover:cursor-pointer">
               <span className="relative z-10 text-sm font-bold uppercase tracking-widest">
                 Contactar Ventas
               </span>
+              
               <motion.div
                 animate={{ x: [0, 4, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
@@ -116,8 +119,10 @@ export default function PinnedAgencyHeader() {
                 <ArrowUpRight size={18} className="transition-transform group-hover:rotate-45" />
               </motion.div>
             </button>
+</Link>
 
-            <button className="group relative flex items-center gap-3 overflow-hidden te px-8 py-5 transition-all border border-neutral-900 hover:bg-neutral-900 hover:text-white">
+            <Link href={"#showcase"}>
+            <button className="group relative flex items-center gap-3 overflow-hidden te px-8 py-5 transition-all border border-neutral-900 hover:bg-neutral-900 hover:text-white hover:cursor-pointer">
               <span className="relative z-10 text-sm font-bold uppercase tracking-widest">
                 Showcase
               </span>
@@ -129,6 +134,7 @@ export default function PinnedAgencyHeader() {
                 <ArrowUpRight size={18} className="transition-transform group-hover:rotate-45" />
               </motion.div>
             </button>
+            </Link>
           </motion.div>
         </motion.div>
 

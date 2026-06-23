@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -13,7 +13,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 
-/* ── Constants ──────────────────────────────────────────────────────────── */
+/* ── Constants  */
 const MONTHS = [
   "January","February","March","April","May","June",
   "July","August","September","October","November","December",
@@ -49,7 +49,7 @@ const TEAM = [
 ];
 
 /* ── Calendar helpers ────────────────────────────────────────────────────── */
-function buildGrid(y, m) {
+function buildGrid(y: number, m: number) {
   const start = new Date(y, m, 1).getDay();
   const count = new Date(y, m + 1, 0).getDate();
   return [
@@ -58,7 +58,7 @@ function buildGrid(y, m) {
   ];
 }
 
-function isSelectable(y, m, d) {
+function isSelectable(y: number, m: number, d: number) {
   const cell  = new Date(y, m, d);
   const floor = new Date();
   floor.setHours(0, 0, 0, 0);
@@ -95,8 +95,32 @@ const ANIM_CSS = `
   .success-in { animation: successIn 0.5s ease-out both; }
 `;
 
+type InputFieldProps = {
+  label: string;
+  required?: boolean;
+  error?: boolean;
+  errMsg?: string;
+  children: React.ReactNode;
+};
+
+type FormState = {
+  firstName: string;
+  lastName: string;
+  company: string;
+  size: string;
+  email: string;
+  message: string;
+};
+
+type LabelProps = {
+  text: string;
+  required?: boolean;
+};
+
+type FormErrors = Partial<Record<keyof FormState, boolean>>;
+
 /* ── Sub-components ──────────────────────────────────────────────────────── */
-function Label({ text, required }) {
+function Label({ text, required }: LabelProps) {
   return (
     <label className="block text-[10px] font-bold uppercase tracking-[0.14em] text-gray-400 mb-1.5">
       {text}
@@ -105,7 +129,7 @@ function Label({ text, required }) {
   );
 }
 
-function InputField({ label, required, error, errMsg, children }) {
+function InputField({ label, required, error, errMsg, children }: InputFieldProps) {
   return (
     <div>
       <Label text={label} required={required} />
@@ -119,7 +143,7 @@ function InputField({ label, required, error, errMsg, children }) {
   );
 }
 
-const inputCls = (err) =>
+const inputCls = (err?: boolean): string =>
   `w-full bg-gray-50 px-3 py-3 text-sm outline-none transition-colors duration-150 placeholder:text-gray-300 caret-black ${
     err ? "ring-1 ring-red-300" : "focus:bg-gray-100"
   }`;
@@ -130,36 +154,43 @@ export default function ContactPage() {
 
   /* form state */
   const [step, setStep]         = useState(1);
-  const [form, setForm]         = useState({
-    firstName: "", lastName: "", company: "", size: "", email: "", message: "",
-  });
-  const [errs, setErrs]         = useState({});
+const [form, setForm] = useState<FormState>({
+  firstName: "",
+  lastName: "",
+  company: "",
+  size: "",
+  email: "",
+  message: "",
+});
+
+const [errs, setErrs] = useState<FormErrors>({});
   const [sizeOpen, setSizeOpen] = useState(false);
 
   /* calendar state */
   const [calY, setCalY] = useState(now.getFullYear());
   const [calM, setCalM] = useState(now.getMonth());
   const [selD, setSelD] = useState(null);
-  const [selT, setSelT] = useState(null);
-
+const [selT, setSelT] = useState<string | null>(null);
   /* helpers */
-  const setF = (k, v) => {
-    setForm((f) => ({ ...f, [k]: v }));
-    setErrs((e) => ({ ...e, [k]: false }));
+const setF = <K extends keyof FormState>(k: K, v: FormState[K]) => {
+  setForm((f) => ({ ...f, [k]: v }));
+  setErrs((e) => ({ ...e, [k]: false }));
+};
+
+function validate(): boolean {
+  const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const e: FormErrors = {
+    firstName: !form.firstName.trim(),
+    lastName: !form.lastName.trim(),
+    company: !form.company.trim(),
+    size: !form.size,
+    email: !form.email.trim() || !emailRx.test(form.email),
   };
 
-  function validate() {
-    const emailRx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const e = {
-      firstName: !form.firstName.trim(),
-      lastName:  !form.lastName.trim(),
-      company:   !form.company.trim(),
-      size:      !form.size,
-      email:     !form.email.trim() || !emailRx.test(form.email),
-    };
-    setErrs(e);
-    return !Object.values(e).some(Boolean);
-  }
+  setErrs(e);
+  return !Object.values(e).some(Boolean);
+}
 
   function prevMonth() {
     setSelD(null); setSelT(null);
@@ -184,7 +215,7 @@ export default function ContactPage() {
             <Check size={30} className="text-white" strokeWidth={3} />
           </div>
           <h2 className="text-3xl font-black mb-2 tracking-tight">
-            You're booked, {form.firstName}!
+            You&apos;re booked, {form.firstName}!
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-8">
             A confirmation is heading to your inbox. Our team will be in touch within 24 hours.

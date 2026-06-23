@@ -6,8 +6,7 @@ import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 
     const cases = [
-  { img: '/lerocher.png', client: "Le Rocher", title: "Una carta de presentación, en donde se transmite la creatividad.", link: "https://lerocherbcn.com" },
-  { img: '/glam.png', client: "Glam Studio", title: "Rediseñando el estilo de estudio de forma esencial." },
+  { img: '/lerocher.png', client: "Le Rocher", title: "Una carta de presentación, con asistente de inteligencia artificial.", link: "https://lerocherbcn.com" },
 ];
 
 export default function Customers() {

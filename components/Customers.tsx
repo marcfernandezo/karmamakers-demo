@@ -12,7 +12,7 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function Customers() {
   return (
-    <section id="customers" className="mx-auto max-w-[1400px] px-6 lg:px-10 py-28 lg:py-40 border-t border-line">
+    <section id="showcase" className="mx-auto max-w-[1400px] px-6 lg:px-10 py-28 lg:py-40 border-t border-line">
       <SectionHeading
         eyebrow="Showcase"
         title="El progreso no se promete. Se construye."

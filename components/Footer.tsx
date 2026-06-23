@@ -21,7 +21,7 @@ const LINKS = {
     { label: "Soluciones", href: "#solutions" },
     { label: "Showcase",   href: "#showcase"   },
     { label: "Nosotros",   href: "#about"   },
-    { label: "Trabajo",    href: "/"    },
+    { label: "Trabajo",    href: "#about"    },
     { label: "Contacto",   href: "#about"   },
   ],
   social: [
